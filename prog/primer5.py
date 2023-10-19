@@ -2,15 +2,27 @@
 # -*- coding: utf-8 -*-
 
 import math
+from operator import indexOf
+import sys
 
+# Постоянная Эйлера.
+EULER = 0.5772156649015329
+# Точность вычислений.
+EPS = 1e-10
 
 if __name__ == '__main__':
-    x = float(input("Value of x? "))
+   x = float(input("Value of x? "))
+   if x == 0:
+      print("Illegal value of x", file=sys.stderr)
+      exit(1)
 
-    if x <= 0:
-       y = 2 * x * x + math.cos(x)
-    elif x < 5:
-       y = x + 1
-    else:
-       y = math.sin(x) - x * x
-    print(f"y = {y}")
+   a = x
+   S, k = a, 1
+
+   # Найти сумму членов ряда.
+   while math.fabs(a) > EPS:
+      a *= x * k / (k + 1) ** 2
+      S += a
+      k += 1
+   # Вывести значение функции.
+   print(f"Ei({x}) = {EULER + math.log(math.fabs(x)) + S}")
