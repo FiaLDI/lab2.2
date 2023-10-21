@@ -3,7 +3,7 @@
 
 
 if __name__ == '__main__':
-    x, y, z = int(inpit("Введите число: ")).split()
+    x, y, z = int(input("Введите число: ")).split()
 
     if x % 2 == 0:
         print(x)

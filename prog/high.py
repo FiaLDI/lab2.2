@@ -6,7 +6,6 @@ from operator import indexOf
 import math
 
 
-# Точность вычислений.
 EPS = 1e-10
 
 if __name__ == '__main__':
